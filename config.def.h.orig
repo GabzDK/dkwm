@@ -27,6 +27,14 @@ static const unsigned int alphas[][3]      = {
 	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
 };
 
+static const char *const autostart[] = {
+    "flameshot", NULL,
+    "/home/kali/.fehbg", NULL,
+    "picom", "-b", NULL,
+    "slstatus", NULL,
+	NULL /* terminate */
+};
+
 /* tagging */
 //static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 static const char *tags[] = {"ένα","δύο","τρία", "τέσσερα", "πέντε", "έξι" };
