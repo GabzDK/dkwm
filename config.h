@@ -16,8 +16,8 @@ static const char col_gray3[]       = "#ebdbb2";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#770000";
 
-static const unsigned int baralpha = 140;
-static const unsigned int borderalpha = 140;
+static const unsigned int baralpha = 100;
+static const unsigned int borderalpha = 100;
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -31,9 +31,13 @@ static const unsigned int alphas[][3]      = {
 };
 
 static const char *const autostart[] = {
+    "xset", "s", "off", NULL,
+    "xset", "s", "noblank", NULL,
+    "xset", "-dpms", NULL,
+    "dbus-update-activation-environment", "--systemd", "--all", NULL,
     "flameshot", NULL,
     "/home/kali/.fehbg", NULL,
-    "picom", "-b", NULL,
+    "picom","--animations", "-b", NULL,
     "slstatus", NULL,
     "dunst", "-b", NULL,
 	NULL /* terminate */
@@ -87,6 +91,7 @@ static const Layout layouts[] = {
 /* commands */
 static const char *rofi[] = { "rofi", "-show", "run", NULL };
 static const char *wallscript[] = { "/usr/local/bin/wallpaper_script.sh", NULL };
+static const char *wallrandom[] = { "/usr/local/bin/wallrandom.sh", NULL };
 static const char *browser[] = { "librewolf", NULL };
 static const char *printscr[] = { "flameshot", "gui", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
@@ -101,6 +106,7 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = rofi} },
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = wallscript} },
+	{ MODKEY|ControlMask,           XK_w,      spawn,          {.v = wallrandom} },
 	{ MODKEY,                       XK_w,      spawn,          {.v = browser} },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
