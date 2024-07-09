@@ -9,7 +9,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int splitstatus        = 1;        /* 1 for split status items */
 static const char *splitdelim        = ";";       /* Character used for separating status */
-static const char *fonts[]          = { "JetBrains Mono Nerd Font:size=10" };
+static const char *fonts[]          = { "Hack:size=10" };
 static const char col_gray1[]       = "#282828";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#ebdbb2";
@@ -35,6 +35,7 @@ static const char *const autostart[] = {
     "/home/kali/.fehbg", NULL,
     "picom", "-b", NULL,
     "slstatus", NULL,
+    "dunst", "-b", NULL,
 	NULL /* terminate */
 };
 
