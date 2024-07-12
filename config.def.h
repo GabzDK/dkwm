@@ -9,7 +9,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int splitstatus        = 1;        /* 1 for split status items */
 static const char *splitdelim        = ";";       /* Character used for separating status */
-static const char *fonts[]          = { "Hack:size=10" };
+static const char *fonts[]          = { "MesloLGLDZ Nerd Font:size=10" };
 static const char col_gray1[]       = "#282828";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#ebdbb2";
@@ -87,6 +87,7 @@ static const Layout layouts[] = {
 #include "movestack.c"
 #include "shift-tools.c"
 #include <X11/XF86keysym.h>
+#include "unfloat.c"
 
 /* commands */
 static const char *rofi[] = { "rofi", "-show", "run", NULL };
@@ -124,6 +125,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,	                    XK_q,      killclient,     {0} },
+    { MODKEY,             XK_z,      unfloatvisible, {.v = &layouts[0]} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
