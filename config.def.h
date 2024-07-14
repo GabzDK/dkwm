@@ -96,9 +96,9 @@ static const char *wallrandom[] = { "/usr/local/bin/wallrandom.sh", NULL };
 static const char *browser[] = { "librewolf", NULL };
 static const char *printscr[] = { "flameshot", "gui", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
-static const char *upvol[]      = { "amixer",  "set", "Master", "5%+", NULL };
-static const char *downvol[]    = { "amixer",  "set", "Master", "5%-", NULL };
-static const char *mutevol[]    = { "amixer", "set", "Master", "toggle", NULL };
+static const char *upvol[]      = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%+",      NULL };
+static const char *downvol[]    = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%-",      NULL };
+static const char *mutevol[]    = { "/usr/bin/wpctl",   "set-mute",   "@DEFAULT_AUDIO_SINK@",      "toggle",   NULL };
 static const char *pctlpause[]  = { "playerctl", "play-pause", NULL };
 static const char *pctlnext[]  = { "playerctl","next" , NULL };
 static const char *pctlprevious[]  = { "playerctl", "previous", NULL };
@@ -125,7 +125,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,	                    XK_q,      killclient,     {0} },
-    { MODKEY,             XK_z,      unfloatvisible, {.v = &layouts[0]} },
+    { MODKEY,                       XK_z,      unfloatvisible, {.v = &layouts[0]} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
