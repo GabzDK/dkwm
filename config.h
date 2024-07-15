@@ -14,8 +14,8 @@ static char normfgcolor[]           = "#bbbbbb";
 static char selfgcolor[]            = "#eeeeee";
 static char selbordercolor[]        = "#770000";
 static char selbgcolor[]            = "#005577";
-static const unsigned int baralpha = OPAQUE;
-static const unsigned int borderalpha = OPAQUE;
+static const unsigned int baralpha = 140;
+static const unsigned int borderalpha = 140;
 
 static const char *colors[][3] = {
        /*               fg           bg           border   */
@@ -30,16 +30,8 @@ static const unsigned int alphas[][3]      = {
 };
 
 static const char *const autostart[] = {
-    "xset", "s", "off", NULL,
-    "xset", "s", "noblank", NULL,
-    "xset", "-dpms", NULL,
-    "dbus-update-activation-environment", "--systemd", "--all", NULL,
-    "flameshot", NULL,
-    "/home/kali/.fehbg", NULL,
-    "picom","--animations", "-b", NULL,
-    "slstatus", NULL,
-    "dunst", "-b", NULL,
-	NULL /* terminate */
+    "/home/kali/.config/dwm/startup.sh", NULL,
+    NULL /* terminate */
 };
 
 /* tagging */
@@ -90,8 +82,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *rofi[] = { "rofi", "-show", "run", NULL };
-static const char *wallscript[] = { "/usr/local/bin/wallpaper_script.sh", NULL };
-static const char *wallrandom[] = { "/usr/local/bin/wallrandom.sh", NULL };
+static const char *wallscript[] = { "wallpaper_script.sh", NULL };
+static const char *wallrandom[] = { "wallrandom.sh", NULL };
 static const char *browser[] = { "librewolf", NULL };
 static const char *printscr[] = { "flameshot", "gui", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
