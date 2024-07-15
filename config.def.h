@@ -1,27 +1,28 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int gappx     = 15;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "MesloLGLDZ Nerd Font:size=10" };
-static char normbgcolor[]           = "#282828";
-static char normbordercolor[]       = "#444444";
-static char normfgcolor[]           = "#bbbbbb";
-static char selfgcolor[]            = "#eeeeee";
-static char selbordercolor[]        = "#770000";
-static char selbgcolor[]            = "#005577";
+static const char *fonts[]          = { "mono:size=10","Symbols Nerd Font:size=12" };
+static const char col_gray3[]       = "#f1be9b"; 
+static const char col_gray1[]       = "#020914";
+static const char col_gray2[]       = "#a8856c";
+static const char col_gray4[]       = "#f1be9b"; 
+static const char col_cyan[]        = "#63576E";
+
 static const unsigned int baralpha = 140;
 static const unsigned int borderalpha = 140;
 
-static const char *colors[][3] = {
-       /*               fg           bg           border   */
-       [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
-       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
+static const char *colors[][3]      = {
+	/*               fg         bg         border   */
+	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+	[SchemeSel]  = { col_gray4, col_cyan,  col_gray4 },
 };
+
 
 static const unsigned int alphas[][3]      = {
     /*               fg      bg        border*/
@@ -35,8 +36,8 @@ static const char *const autostart[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-//static const char *tags[] = {"ένα","δύο","τρία", "τέσσερα", "πέντε", "έξι" };
+//static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = {"ένα","δύο","τρία", "τέσσερα", "πέντε", "έξι" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -86,7 +87,7 @@ static const char *wallscript[] = { "wallpaper_script.sh", NULL };
 static const char *wallrandom[] = { "wallrandom.sh", NULL };
 static const char *browser[] = { "librewolf", NULL };
 static const char *printscr[] = { "flameshot", "gui", NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char *upvol[]      = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%+",      NULL };
 static const char *downvol[]    = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%-",      NULL };
 static const char *mutevol[]    = { "/usr/bin/wpctl",   "set-mute",   "@DEFAULT_AUDIO_SINK@",      "toggle",   NULL };
