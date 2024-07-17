@@ -7,7 +7,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "mono:size=10","Symbols Nerd Font:size=12" };
+static const char *fonts[]          = { "mono:size=10","Symbols Nerd Font:size=10" };
 static const char normbordercolor[]       = "#3B4252";
 static const char normbgcolor[]           = "#2E3440";
 static const char normfgcolor[]           = "#D8DEE9";
@@ -94,7 +94,7 @@ static const char *wallscript[] = { "wallpaper_script.sh", NULL };
 static const char *wallrandom[] = { "wallrandom.sh", NULL };
 static const char *browser[] = { "librewolf", NULL };
 static const char *printscr[] = { "flameshot", "gui", NULL };
-static const char *termcmd[]  = { "kitty", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char *upvol[]      = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%+",      NULL };
 static const char *downvol[]    = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%-",      NULL };
 static const char *mutevol[]    = { "/usr/bin/wpctl",   "set-mute",   "@DEFAULT_AUDIO_SINK@",      "toggle",   NULL };
