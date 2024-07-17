@@ -32,7 +32,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 static const char *const autostart[] = {
-    "/home/kali/.config/dwm/startup.sh", NULL,
+    "/home/kali/.config/dwm/scripts/startup.sh", NULL,
     NULL /* terminate */
 };
 
@@ -91,8 +91,7 @@ static const Layout layouts[] = {
 /* commands */
 static const char *rofi[] = { "rofi", "-show", "run", NULL };
 static const char *wallscript[] = { "wallpaper_script.sh", NULL };
-static const char *wallrandom[] = { "wallrandom.sh", NULL };
-static const char *browser[] = { "librewolf", NULL };
+static const char *browser[] = { "firefox", NULL };
 static const char *printscr[] = { "flameshot", "gui", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *upvol[]      = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%+",      NULL };
@@ -106,7 +105,6 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = rofi} },
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = wallscript} },
-	{ MODKEY|ControlMask,           XK_w,      spawn,          {.v = wallrandom} },
 	{ MODKEY,                       XK_w,      spawn,          {.v = browser} },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
