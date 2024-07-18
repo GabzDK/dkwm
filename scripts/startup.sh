@@ -4,6 +4,6 @@ xset -dpms &
 dbus-update-activation-environment --systemd --all &
 flameshot &
 /home/kali/.fehbg &
-slstatus &
+/home/kali/.config/dwm/bar/dwmbar &
 picom &
 dunst &

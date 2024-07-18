@@ -7,6 +7,8 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const int splitstatus        = 1;        /* 1 for split status items */
+static const char *splitdelim        = ";";       /* Character used for separating status */
 static const char *fonts[]          = { "mono:size=10","Symbols Nerd Font:size=10" };
 static const char normbordercolor[]       = "#3B4252";
 static const char normbgcolor[]           = "#2E3440";
