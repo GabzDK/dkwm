@@ -24,4 +24,5 @@ get_wifi
 
 while true; do
     xsetroot -name "$(LC_TIME=el_GR.utf8 date +'%Y. %b. %d, %a'); $(get_wifi) $(date +'%r')"
+    sleep 1
 done &
