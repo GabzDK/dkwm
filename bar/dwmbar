@@ -6,23 +6,40 @@ get_wifi()
     WIFI_MID_ICON='󰤢'
     WIFI_LOW_ICON='󰤟'
     NO_WIFI_ICON='󰤭'
-
-    if grep -q wl* "/proc/net/wireless"; then
-        # Wifi quality percentage
-        percentage=$(grep "^\s*w" /proc/net/wireless | awk '{ print "", int($3 * 100 / 70)}'| xargs)
-        case $percentage in
-            0)                              echo $NO_WIFI_ICON;;
-            100|9[0-9]|8[0-9]|7[0-9])       echo $WIFI_FULL_ICON;;
-            6[0-9]|5[0-9]|4[0-9]|3[0-9])    echo $WIFI_MID_ICON;;
-            2[0-9]|1[0-9]|[0-9])            echo $WIFI_LOW_ICON;;
-            *)                              echo $NO_WIFI_ICON;;
-        esac
+    netstate=$(grep "" /sys/class/net/enp3s0/operstate)
+    if [[ $netstate == 'down' ]]; then
+        if grep -q wl* "/proc/net/wireless"; then
+            # Wifi quality percentage
+            percentage=$(grep "^\s*w" /proc/net/wireless | awk '{ print "", int($3 * 100 / 70)}'| xargs)
+            case $percentage in
+                0)                              echo ""$NO_WIFI_ICON;;
+                100|9[0-9]|8[0-9]|7[0-9])       echo ""$WIFI_FULL_ICON;;
+                6[0-9]|5[0-9]|4[0-9]|3[0-9])    echo ""$WIFI_MID_ICON;;
+                2[0-9]|1[0-9]|[0-9])            echo ""$WIFI_LOW_ICON;;
+                *)                              echo ""$NO_WIFI_ICON;;
+            esac
+        fi
+        else
+            echo ""
     fi
+
 }
 
-get_wifi
+get_battery(){
+    BATTERY_FULL='󰁹'
+    BATTERY_MID='󰁾'
+    BATTERY_LOW='󰁻'
+    battery=$(cat '/sys/class/power_supply/BAT0/capacity')
+    case $battery in
+        100|9[0-9]|8[0-9]|7[0-9])       echo $BATTERY_FULL $battery"%";;
+        6[0-9]|5[0-9]|4[0-9]|3[0-9])    echo $BATTERY_MID $battery"%";;
+        2[0-9]|1[0-9]|[0-9])            echo $BATTERY_LOW $battery"%";;
+        *)                              echo "ERROR";;
+    esac
+}
 
 while true; do
-    xsetroot -name "$(LC_TIME=el_GR.utf8 date +'%Y. %b. %d, %a'); $(get_wifi) $(date +'%r')"
+    xsetroot -name "$(LC_TIME=el_GR.utf8 date +'%Y. %b. %d, %a'); $(get_battery)$(get_wifi) $(date +'%r')"
     sleep 1
 done &
+
