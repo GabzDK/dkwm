@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 15;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
@@ -9,15 +9,15 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int splitstatus        = 1;        /* 1 for split status items */
 static const char *splitdelim        = ";";       /* Character used for separating status */
-static const char *fonts[]          = { "mono:size=10","Symbols Nerd Font:size=10" };
-static const char normbordercolor[]       = "#3B4252";
-static const char normbgcolor[]           = "#2E3440";
-static const char normfgcolor[]           = "#D8DEE9";
-static const char selbordercolor[]        = "#434C5E";
-static const char selbgcolor[]            = "#434C5E";
-static const char selfgcolor[]            = "#ECEFF4";
+static const char *fonts[]          = { "Hack:size=10","Symbols Nerd Font:size=10" };
+static char normbgcolor[]           = "#222222";
+static char normbordercolor[]       = "#444444";
+static char normfgcolor[]           = "#bbbbbb";
+static char selfgcolor[]            = "#eeeeee";
+static char selbordercolor[]        = "#770000";
+static char selbgcolor[]            = "#005577";
 
-static const unsigned int baralpha = 140;
+static const unsigned int baralpha = OPAQUE;
 static const unsigned int borderalpha = OPAQUE;
 
 static const char *colors[][3]      = {
@@ -35,7 +35,7 @@ static const unsigned int alphas[][3]      = {
 
 static const char *const autostart[] = {
     "/home/kali/.config/dwm/scripts/startup.sh", NULL,
-    NULL /* terminate */
+    NULL, /* terminate */
 };
 
 /* tagging */
@@ -50,7 +50,8 @@ static const Rule rules[] = {
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-	{ "Alacritty",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ "kitty",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
@@ -91,9 +92,9 @@ static const Layout layouts[] = {
 #include "unfloat.c"
 
 /* commands */
-static const char *rofi[] = { "rofi", "-show", "run", NULL };
+static const char *rofi[] = { "dmenu_run", NULL };
 static const char *wallscript[] = { "wallpaper_script.sh", NULL };
-static const char *browser[] = { "firefox", NULL };
+static const char *browser[] = { "brave", NULL };
 static const char *printscr[] = { "flameshot", "gui", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *upvol[]      = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%+",      NULL };

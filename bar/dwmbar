@@ -20,7 +20,7 @@ get_wifi()
             esac
         fi
         else
-            echo ""
+            echo "󰈀"
     fi
 
 }
@@ -30,16 +30,19 @@ get_battery(){
     BATTERY_MID='󰁾'
     BATTERY_LOW='󰁻'
     battery=$(cat '/sys/class/power_supply/BAT0/capacity')
-    case $battery in
-        100|9[0-9]|8[0-9]|7[0-9])       echo $BATTERY_FULL $battery"%";;
-        6[0-9]|5[0-9]|4[0-9]|3[0-9])    echo $BATTERY_MID $battery"%";;
-        2[0-9]|1[0-9]|[0-9])            echo $BATTERY_LOW $battery"%";;
-        *)                              echo "ERROR";;
-    esac
+    battery_status=$(cat '/sys/class/power_supply/BAT0/status')
+    if [[ $battery_status == 'Discharging' ]]; then
+        case $battery in
+            100|9[0-9]|8[0-9]|7[0-9])       echo $BATTERY_FULL $battery"%";;
+            6[0-9]|5[0-9]|4[0-9]|3[0-9])    echo $BATTERY_MID $battery"%";;
+            2[0-9]|1[0-9]|[0-9])            echo $BATTERY_LOW $battery"%";;
+            *)                              echo "ERROR";;
+        esac
+    fi
 }
 
 while true; do
-    xsetroot -name "$(LC_TIME=el_GR.utf8 date +'%Y. %b. %d, %a'); $(get_battery)$(get_wifi) $(date +'%r')"
+    xsetroot -name "$(LC_TIME=el_GR.utf8 date +'%Y. %b. %d, %a'); $(get_battery) $(get_wifi) $(date +'%r')"
     sleep 1
 done &
 
