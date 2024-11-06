@@ -2,6 +2,6 @@ xset s off &
 xset s noblank &
 xset -dpms &
 flameshot &
-/home/kali/.fehbg &
+/home/blackcat/.fehbg &
 picom &
 dunst &

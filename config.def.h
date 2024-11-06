@@ -34,7 +34,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 static const char *const autostart[] = {
-    "/home/kali/.config/dwm/scripts/startup.sh", NULL,
+    "/home/blackcat/.config/dwm/scripts/startup.sh", NULL,
     NULL, /* terminate */
 };
 
@@ -51,7 +51,7 @@ static const Rule rules[] = {
 	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
 	{ "kitty",      NULL,     NULL,           0,         0,          1,           0,        -1 },
-	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ "wezterm",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
@@ -94,12 +94,14 @@ static const Layout layouts[] = {
 /* commands */
 static const char *rofi[] = { "dmenu_run", NULL };
 static const char *wallscript[] = { "wallpaper_script.sh", NULL };
-static const char *browser[] = { "brave", NULL };
+static const char *browser[] = { "zen-browser", NULL };
 static const char *printscr[] = { "flameshot", "gui", NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "wezterm", NULL };
 static const char *upvol[]      = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%+",      NULL };
 static const char *downvol[]    = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%-",      NULL };
 static const char *mutevol[]    = { "/usr/bin/wpctl",   "set-mute",   "@DEFAULT_AUDIO_SINK@",      "toggle",   NULL };
+static const char *brupcmd[] = { "brightnessctl", "set", "10%+", NULL };
+static const char *brdowncmd[] = { "brightnessctl", "set", "10%-", NULL };
 static const char *pctlpause[]  = { "playerctl", "play-pause", NULL };
 static const char *pctlnext[]  = { "playerctl","next" , NULL };
 static const char *pctlprevious[]  = { "playerctl", "previous", NULL };
@@ -170,6 +172,8 @@ static const Key keys[] = {
 	{ 0,                       XF86XK_AudioPrev,      spawn,          {.v = pctlprevious} },
 	{ 0,                       XF86XK_AudioNext,      spawn,          {.v = pctlnext} },
 	{ 0,                       XF86XK_AudioPlay,      spawn,          {.v = pctlpause} },
+    { 0, XF86XK_MonBrightnessUp,  spawn,          {.v = brupcmd} },
+    { 0, XF86XK_MonBrightnessDown, spawn,          {.v = brdowncmd} },
 	{ 0,	                        XK_Print,  spawn,          {.v = printscr} },
 };
 
